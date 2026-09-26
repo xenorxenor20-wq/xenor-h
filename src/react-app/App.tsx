@@ -15,12 +15,42 @@ type Page =
   | "ADMIN";
 
 const modules = [
-  { id: "AI" as Page, icon: "✦", title: "XENOR AI", text: "AI tools & intelligent creation" },
-  { id: "VIDEO" as Page, icon: "▶", title: "XENOR VIDEO", text: "Ideas, scripts & video creation" },
-  { id: "STUDIO" as Page, icon: "◈", title: "XENOR STUDIO", text: "Design, branding & production" },
-  { id: "ACADEMY" as Page, icon: "◆", title: "XENOR ACADEMY", text: "Learn. Create. Grow." },
-  { id: "MARKET" as Page, icon: "◇", title: "XENOR MARKET", text: "Digital services & products" },
-  { id: "COMMUNITY" as Page, icon: "◎", title: "XENOR COMMUNITY", text: "Connect with XENOR" },
+  {
+    id: "AI" as Page,
+    icon: "✦",
+    title: "XENOR AI",
+    text: "AI tools & intelligent creation",
+  },
+  {
+    id: "VIDEO" as Page,
+    icon: "▶",
+    title: "XENOR VIDEO",
+    text: "Ideas, scripts & video creation",
+  },
+  {
+    id: "STUDIO" as Page,
+    icon: "◈",
+    title: "XENOR STUDIO",
+    text: "Design, branding & production",
+  },
+  {
+    id: "ACADEMY" as Page,
+    icon: "◆",
+    title: "XENOR ACADEMY",
+    text: "Learn. Create. Grow.",
+  },
+  {
+    id: "MARKET" as Page,
+    icon: "◇",
+    title: "XENOR MARKET",
+    text: "Digital services & products",
+  },
+  {
+    id: "COMMUNITY" as Page,
+    icon: "◎",
+    title: "XENOR COMMUNITY",
+    text: "Connect with XENOR",
+  },
 ];
 
 function App() {
@@ -33,17 +63,27 @@ function App() {
   const go = (next: Page) => {
     setPage(next);
     setMenu(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const generateAI = () => {
     if (!prompt.trim()) {
-      setResult("اكتب فكرتك أولًا، وXENOR AI سيجهز لك بداية إبداعية.");
+      setResult(
+        "اكتب فكرتك أولًا، وXENOR AI سيجهز لك بداية إبداعية."
+      );
       return;
     }
 
     setResult(
-      `XENOR AI Concept\n\nالفكرة: ${prompt}\n\nالاتجاه المقترح: محتوى حديث يجمع الهوية البصرية، الرسالة التسويقية والتجربة الرقمية.`
+      `XENOR AI Concept
+
+الفكرة: ${prompt}
+
+الاتجاه المقترح:
+محتوى حديث يجمع الهوية البصرية، الرسالة التسويقية والتجربة الرقمية.`
     );
   };
 
@@ -56,4 +96,32 @@ function App() {
       "🚀 فكرة مشروع رقمي",
     ];
 
-    set
+    const randomItem =
+      items[Math.floor(Math.random() * items.length)];
+
+    setMystery(randomItem);
+  };
+
+  return (
+    <div className="xenor-app">
+      <header className="topbar">
+        <button
+          className="brand"
+          onClick={() => go("HOME")}
+        >
+          <span className="brand-x">X</span>
+
+          <span>
+            <strong>XENOR</strong>
+            <small>
+              INTEGRATED MARKETING & DIGITAL SOLUTIONS
+            </small>
+          </span>
+        </button>
+
+        <button
+          className="menu-btn"
+          onClick={() => setMenu(!menu)}
+        >
+          {menu ? "×" : "☰"}
+       
